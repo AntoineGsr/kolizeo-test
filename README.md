@@ -116,7 +116,6 @@ Variables d'environnement requises (`.env`) :
 ```env
 UNITY_PROJECT_ID=your_project_id
 UNITY_COOKIE_NAME=kolizeo_unity_token
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
 NODE_ENV=development
 ```
 
