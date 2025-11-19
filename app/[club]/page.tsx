@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { LinkCardsList } from './components/LinkCard'
 import type { ClubConfig } from '@/lib/unity/types'
 import { fetchAllClubs } from '@/lib/unity/fetch-clubs'
+import { mapClubToKey } from '@/lib/unity/map-club-to-key'
 
 async function getClubConfig(configKey: string): Promise<ClubConfig | null> {
   try {
@@ -18,7 +19,13 @@ interface ClubPageProps {
 
 export default async function ClubPage({ params }: ClubPageProps) {
   const { club } = await params
-  const config = await getClubConfig(club)
+  const configKey = mapClubToKey(club)
+
+  if (!configKey) {
+    notFound()
+  }
+
+  const config = await getClubConfig(configKey)
 
   if (!config) {
     notFound()

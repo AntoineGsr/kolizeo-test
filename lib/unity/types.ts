@@ -45,6 +45,7 @@ export interface LinkItem {
 
 export interface ClubConfig {
   id: string
+  url: string
   color: string
   links: LinkItem[]
 }

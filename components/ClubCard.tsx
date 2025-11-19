@@ -35,7 +35,7 @@ export function ClubCard({ club }: ClubCardProps) {
         <CardContent>
           <ButtonShiny
             label="Voir les détails du club"
-            onClick={() => router.push(`/${club.id}`)}
+            onClick={() => router.push(`/${club.url}`)}
           />
         </CardContent>
       </Card>

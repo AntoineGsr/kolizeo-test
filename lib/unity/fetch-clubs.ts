@@ -3,6 +3,7 @@ import { log, error } from '@/lib/utils/logger'
 import { ClubConfig } from './types'
 import { cookies } from 'next/headers'
 import { getTokenFromCookies } from './token-manager'
+import { mapKeyToClub } from './map-club-to-key'
 
 export async function fetchAllClubs(configKey?: string): Promise<ClubConfig[]> {
   try {
@@ -31,8 +32,11 @@ export async function fetchAllClubs(configKey?: string): Promise<ClubConfig[]> {
           color: btn.BGColor,
         }))
 
+        const clubUrl = mapKeyToClub(configKey) || configKey.toLowerCase()
+
         clubs.push({
           id: configKey,
+          url: clubUrl,
           color: config.BGColor,
           links,
         })
